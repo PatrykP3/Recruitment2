@@ -1,6 +1,6 @@
 # Recruitment2
 
-It's a solution to recruitment task. Initial , incomplete state presents results of recruitment programming session. I want to evolve it first to have fully working solution and then possibly "springifie" it.
+It's a solution to recruitment task. Initial, incomplete state presents results of recruitment programming session. I want to evolve it first to have fully working solution and then possibly "springifie" it.
 
 Time for the task: 15 minutes for analysis and questions, 75 minutes for coding.
 
@@ -52,4 +52,10 @@ Assume that data commands are most common and all ahould have complexity of O(lo
 
 Be efficient in memory use: no copying all variables with every BEGIN command. Assume only small number of variables will be changed in transaction.
 
-
+## Tags
+### v1.0
+#### Description
+Initial state. Code stays intact as it was after recruitment.
+#### Differences
+* README.md added
+* .gitignore added.
