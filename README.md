@@ -59,3 +59,8 @@ Initial state. Code state as it was after recruitment - so no nested transaction
 #### Differences
 * README.md added
 * .gitignore added.
+### v1.1
+#### Description
+Transaction fixed.
+#### Differences
+* README.md updated.
