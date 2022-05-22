@@ -17,7 +17,12 @@ public class Database {
 
         if (transactionData != null) {
             if (command.getItemName() != null) {
-                transactionData.addMember(data.get(command.getItemName()));
+
+                Item transactionMember = data.get(command.getItemName());
+                if(transactionMember == null) {
+                    transactionMember = new Item(command.getItemName(), null);
+                }
+                transactionData.addMember(transactionMember);
             }
         }
 
@@ -26,8 +31,7 @@ public class Database {
 
     public static void transactionStart() {
         transactionData = new TransactionData();
-        transactionData.setTransactionRunning(true);
-    };
+    }
 
     public static void transactionEnd() {
         transactionData = null;
@@ -36,7 +40,12 @@ public class Database {
     public static void transactionRollback() {
 
         for(Item transactionMember : transactionData.getMembers()) {
-            data.put(transactionMember.getName(), transactionMember);
+            if(transactionMember.getValue() != null) {
+                data.put(transactionMember.getName(), transactionMember);
+            }
+            else {
+                data.remove(transactionMember.getName());
+            }
         }
         transactionData = null;
     }

@@ -1,8 +1,10 @@
 package org.nowpat;
 
+import org.junit.Test;
+
 public class ReaderTest {
 
-//    @Test
+    @Test
     public void simpleTest() {
 
     }
