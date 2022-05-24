@@ -10,10 +10,11 @@ public class Reader {
 
     public void read() {
         Scanner scanner = new Scanner(System.in);
+        Database database = new Database();
         while(scanner.hasNext()) {
 
             DatabaseCommand command = CommandFactory.getCommand(scanner.nextLine());
-            Database.runCommand(command);
+            database.runCommand(command);
         }
     }
 }

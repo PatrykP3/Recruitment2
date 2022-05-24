@@ -8,12 +8,13 @@ import java.util.HashMap;
 
 public class Database {
 
-    public static HashMap<String, Item> data = new HashMap<>();
+    @Getter
+    private HashMap<String, Item> data = new HashMap<>();
 
     @Getter
-    private static TransactionData transactionData;
+    private TransactionData transactionData;
 
-    public static void runCommand(DatabaseCommand command) {
+    public void runCommand(DatabaseCommand command) {
 
         if (transactionData != null) {
             if (command.getItemName() != null) {
@@ -26,18 +27,18 @@ public class Database {
             }
         }
 
-        command.run();
+        command.run(this);
     }
 
-    public static void transactionStart() {
+    public void transactionStart() {
         transactionData = new TransactionData();
     }
 
-    public static void transactionEnd() {
+    public void transactionEnd() {
         transactionData = null;
     }
 
-    public static void transactionRollback() {
+    public void transactionRollback() {
 
         for(Item transactionMember : transactionData.getMembers()) {
             if(transactionMember.getValue() != null) {

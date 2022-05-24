@@ -9,15 +9,15 @@ public class CountCommand implements DatabaseCommand {
     private int value;
 
     public CountCommand(String value) {
-        this.value = Integer.valueOf(value);
+        this.value = Integer.parseInt(value);
     }
 
     @Override
-    public void run() {
+    public void run(Database database) {
 
         int count = 0;
 
-        for(Item item : Database.data.values()) {
+        for(Item item : database.getData().values()) {
             if(item.getValue() == value) {
                 count ++;
             }

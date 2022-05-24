@@ -15,9 +15,9 @@ public class SetCommand implements DatabaseCommand {
     }
 
     @Override
-    public void run() {
+    public void run(Database database) {
 
-        Database.data.put(name, new Item(name, value));
+        database.getData().put(name, new Item(name, value));
     }
 
     @Override

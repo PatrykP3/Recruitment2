@@ -13,11 +13,11 @@ public class GetCommand implements DatabaseCommand {
     }
 
     @Override
-    public void run() {
+    public void run(Database database) {
 
-        if(Database.data.containsKey(name)) {
+        if(database.getData().containsKey(name)) {
 
-            Item item = Database.data.get(name);
+            Item item = database.getData().get(name);
             System.out.println(item.getValue());
             return;
         }

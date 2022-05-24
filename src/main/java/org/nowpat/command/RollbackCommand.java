@@ -4,9 +4,9 @@ import org.nowpat.database.Database;
 
 public class RollbackCommand implements DatabaseCommand {
     @Override
-    public void run() {
+    public void run(Database database) {
 
-        Database.transactionRollback();
+        database.transactionRollback();
     }
 
     @Override

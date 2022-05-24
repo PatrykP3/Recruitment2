@@ -4,6 +4,6 @@ import org.nowpat.database.Database;
 
 public interface DatabaseCommand {
 
-    public void run();
-    public String getItemName();
+    void run(Database database);
+    String getItemName();
 }

@@ -5,8 +5,8 @@ import org.nowpat.database.Database;
 public class CommitCommand implements DatabaseCommand {
 
     @Override
-    public void run() {
-        Database.transactionEnd();
+    public void run(Database database) {
+        database.transactionEnd();
     }
 
     @Override
