@@ -40,6 +40,10 @@ public class Database {
 
     public void transactionRollback() {
 
+        if(getTransactionData() == null) {
+            throw new IllegalStateException();
+        }
+
         for(Item transactionMember : transactionData.getMembers()) {
             if(transactionMember.getValue() != null) {
                 data.put(transactionMember.getName(), transactionMember);

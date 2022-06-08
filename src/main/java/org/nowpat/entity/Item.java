@@ -1,14 +1,12 @@
 package org.nowpat.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Item {
 
     private String name;

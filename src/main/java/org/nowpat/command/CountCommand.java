@@ -1,6 +1,5 @@
 package org.nowpat.command;
 
-import lombok.AllArgsConstructor;
 import org.nowpat.database.Database;
 import org.nowpat.entity.Item;
 

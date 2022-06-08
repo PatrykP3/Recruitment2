@@ -64,3 +64,11 @@ Initial state. Code state as it was after recruitment - so no nested transaction
 Transaction fixed.
 #### Differences
 * README.md updated.
+### v1.2
+#### Description
+Tests added.
+#### Differences
+* test classes and test suite added
+* thanks to tests bug in rollback command fixed
+* reader class parametrized with input stream for better flexibility and future integration tests
+* README.md updated.
