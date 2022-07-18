@@ -70,5 +70,10 @@ Tests added.
 #### Differences
 * test classes and test suite added
 * thanks to tests bug in rollback command fixed
-* reader class parametrized with input stream for better flexibility and future integration tests
-* README.md updated.
+* reader class parametrized with input stream for better flexibility and future integration tests.
+### v1.3
+* separate classess for input and output
+* return result introduced for commands - output functionality moved to different class
+* transaction commands now may fail as in requirements
+* unknown command processing moved to reader
+* tests updated.

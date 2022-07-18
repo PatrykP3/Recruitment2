@@ -1,4 +1,6 @@
-package org.nowpat.command;
+package org.nowpat.command.factory;
+
+import org.nowpat.command.*;
 
 public class CommandFactory {
 
@@ -6,7 +8,7 @@ public class CommandFactory {
     public static final int NAME = 1;
     public static final int VALUE = 2;
 
-    public static DatabaseCommand getCommand(String commandLine) {
+    public static DatabaseCommand getCommand(String commandLine) throws IllegalCommandException {
 
         String[] commandLineData = commandLine.split(" ");
 
@@ -33,10 +35,8 @@ public class CommandFactory {
             case "ROLLBACK":
                 return new RollbackCommand();
 
-
             default:
-                System.out.println("Unknown command.");
-                return null;
+                throw new IllegalCommandException("Unknown command name.");
         }
     }
 }

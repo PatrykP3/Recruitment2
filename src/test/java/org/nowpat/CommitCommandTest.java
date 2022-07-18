@@ -9,7 +9,20 @@ import static org.mockito.Mockito.*;
 public class CommitCommandTest {
 
     @Test
-    public void simpleTest() {
+    public void commitExistingTransactionTest() {
+
+        Database database = spy(new Database());
+        database.transactionStart();
+
+        CommitCommand commitCommand = new CommitCommand();
+        commitCommand.run(database);
+
+        verify(database, times(1)).isTransactionRunning();
+        verify(database, times(1)).transactionEnd();
+    }
+
+    @Test
+    public void commitNonexistentTransactionTest() {
 
         Database database = spy(new Database());
 
@@ -17,6 +30,7 @@ public class CommitCommandTest {
 
         commitCommand.run(database);
 
-        verify(database, times(1)).transactionEnd();
+        verify(database, times(1)).isTransactionRunning();
+        verify(database, times(0)).transactionEnd();
     }
 }

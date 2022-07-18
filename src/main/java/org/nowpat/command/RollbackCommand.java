@@ -3,14 +3,14 @@ package org.nowpat.command;
 import org.nowpat.database.Database;
 
 public class RollbackCommand implements DatabaseCommand {
-    @Override
-    public void run(Database database) {
-
-        database.transactionRollback();
-    }
 
     @Override
-    public String getItemName() {
-        return null;
+    public CommandResult run(Database database) {
+
+        if(database.isTransactionRunning()) {
+            database.transactionRollback();
+            return CommandResult.createSuccess();
+        }
+        return CommandResult.createFailure("No transaction in progress.");
     }
 }

@@ -1,6 +1,7 @@
 package org.nowpat.database;
 
 import lombok.Getter;
+import org.nowpat.command.CommandResult;
 import org.nowpat.command.DatabaseCommand;
 import org.nowpat.entity.Item;
 
@@ -14,7 +15,7 @@ public class Database {
     @Getter
     private TransactionData transactionData;
 
-    public void runCommand(DatabaseCommand command) {
+    public CommandResult runCommand(DatabaseCommand command) {
 
         if (transactionData != null) {
             if (command.getItemName() != null) {
@@ -27,7 +28,7 @@ public class Database {
             }
         }
 
-        command.run(this);
+        return command.run(this);
     }
 
     public void transactionStart() {
@@ -53,5 +54,9 @@ public class Database {
             }
         }
         transactionData = null;
+    }
+
+    public boolean isTransactionRunning() {
+        return transactionData != null;
     }
 }

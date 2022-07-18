@@ -5,12 +5,15 @@ import org.nowpat.database.Database;
 public class CommitCommand implements DatabaseCommand {
 
     @Override
-    public void run(Database database) {
-        database.transactionEnd();
-    }
+    public CommandResult run(Database database) {
 
-    @Override
-    public String getItemName() {
-        return null;
+        if(database.isTransactionRunning()) {
+
+            database.transactionEnd();
+
+            return CommandResult.createSuccess();
+        }
+
+        return CommandResult.createFailure("No transaction in progress.");
     }
 }

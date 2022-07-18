@@ -9,9 +9,11 @@ public class DeleteCommand implements DatabaseCommand {
     private String name;
 
     @Override
-    public void run(Database database) {
+    public CommandResult run(Database database) {
 
         database.getData().remove(name);
+
+        return CommandResult.createSuccess();
     }
 
     @Override

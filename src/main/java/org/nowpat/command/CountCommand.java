@@ -12,7 +12,7 @@ public class CountCommand implements DatabaseCommand {
     }
 
     @Override
-    public void run(Database database) {
+    public CommandResult run(Database database) {
 
         int count = 0;
 
@@ -22,11 +22,6 @@ public class CountCommand implements DatabaseCommand {
             }
         }
 
-        System.out.println(count);
-    }
-
-    @Override
-    public String getItemName() {
-        return null;
+        return CommandResult.createSuccess(String.valueOf(count));
     }
 }

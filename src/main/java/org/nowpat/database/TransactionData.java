@@ -10,16 +10,12 @@ import java.util.List;
 public class TransactionData {
 
     @Getter
-    private boolean transactionRunning;
-
-    @Getter
     private HashMap<String, Item> transactionMembers = new HashMap<>();
 
     public List<Item> getMembers() {
 
         return new ArrayList<>(transactionMembers.values());
     }
-
 
     public void addMember(Item item) {
 

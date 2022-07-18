@@ -13,20 +13,19 @@ public class GetCommand implements DatabaseCommand {
     }
 
     @Override
-    public void run(Database database) {
+    public CommandResult run(Database database) {
+
+        String result;
 
         if(database.getData().containsKey(name)) {
 
             Item item = database.getData().get(name);
-            System.out.println(item.getValue());
-            return;
+            result = String.valueOf(item.getValue());
+        }
+        else {
+            result = "NULL";
         }
 
-        System.out.println("NULL");
-    }
-
-    @Override
-    public String getItemName() {
-        return null;
+        return CommandResult.createSuccess(result);
     }
 }

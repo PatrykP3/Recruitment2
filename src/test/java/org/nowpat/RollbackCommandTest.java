@@ -9,17 +9,17 @@ import static org.mockito.Mockito.*;
 
 public class RollbackCommandTest {
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void noTransactionTest() {
 
         Database database = spy(new Database());
         when(database.getTransactionData()).thenReturn(new TransactionData());
 
         RollbackCommand rollbackCommand = new RollbackCommand();
-
         rollbackCommand.run(database);
 
-        verify(database, times(1)).transactionRollback();
+        verify(database, times(1)).isTransactionRunning();
+        verify(database, times(0)).transactionRollback();
     }
 
     @Test
@@ -29,9 +29,9 @@ public class RollbackCommandTest {
         database.transactionStart();
 
         RollbackCommand rollbackCommand = new RollbackCommand();
-
         rollbackCommand.run(database);
 
+        verify(database, times(1)).isTransactionRunning();
         verify(database, times(1)).transactionRollback();
     }
 }
